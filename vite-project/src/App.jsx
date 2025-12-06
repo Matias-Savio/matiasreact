@@ -1,24 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import { Header } from "./componentes/header";
-import { Footer } from "./componentes/footer";
-import { ItemListContainer } from "./componentes/ItemListContainer";
-import { Categoria } from "./componentes/Categoria";
-import { ItemDetail } from "./componentes/ItemDetail";
-import { Main } from "./componentes/Main";
+import Home from "./pages/Home";
+import Categoria from "./pages/Categoria";
+import Detalle from "./pages/Detalle";
+import Item from "./pages/Item";
 
 function App() {
   return (
     <>
-      <Header />
-      <Main />
-
       <Routes>
-        <Route path="/" element={<ItemListContainer />} />
-        <Route path="/categoria/:id" element={<Categoria />} />
-        <Route path="/item/:id" element={<ItemDetail />} />
-      </Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/categoria" element={<Categoria />} />
 
-      <Footer />
+        <Route path="/item" element={<Item />} />
+        <Route path="/detalle/:id" element={<Detalle />} />
+      </Routes>
     </>
   );
 }
