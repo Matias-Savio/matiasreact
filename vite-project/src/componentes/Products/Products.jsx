@@ -1,13 +1,27 @@
-import { useState, useEffect } from "react";
+import "./Products.css";
+import data from "../../data.json";
 
 const Products = () => {
-  const [Products, setProducts] = useState([]);
+  const handleAddToCart = (product) => {
+    console.log("Agregando al carrito:", product);
+  };
 
-  useEffect(() => {
-    fetch("data.json")
-      .then((Response) => Response.json())
-      .then((data) => setProducts(data));
-  }, []);
-  return <div>Products</div>;
+  return (
+    <>
+      {data.map((product) => {
+        return (
+          <div className="card" key={product.id}>
+            <img src={product.img} alt={product.name} />
+            <h3>{product.name}</h3>
+            <h4>${product.price}</h4>
+            <button onClick={() => handleAddToCart(product)}>
+              Agregar al carrito
+            </button>
+          </div>
+        );
+      })}
+    </>
+  );
 };
+
 export default Products;

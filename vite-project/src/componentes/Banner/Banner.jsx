@@ -3,8 +3,8 @@ const Banner = () => {
   return (
     <div className="banner">
       <div className="banner-container">
-        <h1>Shop</h1>
-        <p>Telefonos</p>
+        <h1>Tienda</h1>
+        <p>ElectroLocura</p>
       </div>
     </div>
   );
