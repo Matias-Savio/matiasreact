@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "name": "Pc gamer",
+    "price": 10,
+    "img": "https://res.cloudinary.com/duvzoazz3/image/upload/v1752365960/D_NQ_NP_837002-MLA81819412766_012025-O_inozsl.webp",
+    "quanty": 1
+  },
+
+  {
+    "id": 2,
+    "name": "Auriculares",
+    "price": 20,
+    "img": "https://res.cloudinary.com/duvzoazz3/image/upload/v1752365150/1366_2000_xnpxqa.jpg",
+    "quanty": 1
+  },
+
+  {
+    "id": 3,
+    "name": "Notebook",
+    "price": 32,
+    "img": "https://res.cloudinary.com/duvzoazz3/image/upload/v1752365597/il_fullxfull.5801852958_pq85_qrybzu.jpg",
+    "quanty": 1
+  }
+]
