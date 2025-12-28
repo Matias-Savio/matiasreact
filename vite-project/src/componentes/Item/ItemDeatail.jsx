@@ -4,23 +4,33 @@ import { CartContext } from "../../Context/context";
 import ItemCount from "./ItemCount";
 import NavBar from "../Navbar/Navbar";
 import "./ItemDetail.css";
-import data from "../../data.json";
+import { getProductById } from "../../services/firestoreService";
 
 const ItemDetail = () => {
   const { id } = useParams();
   const { handleAddToCart } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulate loading and find product
-    const timer = setTimeout(() => {
-      const foundProduct = data.find((item) => item.id === parseInt(id));
-      setProduct(foundProduct);
-      setLoading(false);
-    }, 500);
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const fetchedProduct = await getProductById(id);
+        setProduct(fetchedProduct);
+        setError(null);
+      } catch (err) {
+        console.error("Error loading product:", err);
+        setError("Error al cargar el producto");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return () => clearTimeout(timer);
+    if (id) {
+      fetchProduct();
+    }
   }, [id]);
 
   const handleAdd = (quantity) => {
@@ -35,6 +45,15 @@ const ItemDetail = () => {
       <>
         <NavBar />
         <div className="item-detail-loading">Cargando producto...</div>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <NavBar />
+        <div className="item-detail-error">{error}</div>
       </>
     );
   }

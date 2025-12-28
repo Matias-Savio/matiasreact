@@ -46,8 +46,13 @@
 }
 
 .item-list-loading,
-.item-list-empty {
+.item-list-empty,
+.item-list-error {
   text-align: center;
   padding: 40px;
   font-size: 20px;
+}
+
+.item-list-error {
+  color: #d32f2f;
 }

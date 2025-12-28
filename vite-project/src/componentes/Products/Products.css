@@ -41,3 +41,14 @@
   text-align: right;
   justify-content: center;
 }
+
+.products-loading,
+.products-error {
+  text-align: center;
+  padding: 40px;
+  font-size: 20px;
+}
+
+.products-error {
+  color: #d32f2f;
+}

@@ -3,29 +3,40 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/context";
 import ItemCount from "./ItemCount";
 import "./ItemListContainer.css";
-import data from "../../data.json";
+import {
+  getProducts,
+  getProductsByCategory,
+} from "../../services/firestoreService";
 
 const ItemListContainer = ({ category = null }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { handleAddToCart } = useContext(CartContext);
 
   useEffect(() => {
-    // Simulate loading
-    const timer = setTimeout(() => {
-      let filteredProducts = data;
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        let fetchedProducts;
 
-      if (category) {
-        filteredProducts = data.filter(
-          (product) => product.category === category
-        );
+        if (category) {
+          fetchedProducts = await getProductsByCategory(category);
+        } else {
+          fetchedProducts = await getProducts();
+        }
+
+        setProducts(fetchedProducts);
+        setError(null);
+      } catch (err) {
+        console.error("Error loading products:", err);
+        setError("Error al cargar los productos");
+      } finally {
+        setLoading(false);
       }
+    };
 
-      setProducts(filteredProducts);
-      setLoading(false);
-    }, 500);
-
-    return () => clearTimeout(timer);
+    fetchProducts();
   }, [category]);
 
   const handleAdd = (product, quantity) => {
@@ -35,6 +46,10 @@ const ItemListContainer = ({ category = null }) => {
 
   if (loading) {
     return <div className="item-list-loading">Cargando productos...</div>;
+  }
+
+  if (error) {
+    return <div className="item-list-error">{error}</div>;
   }
 
   if (products.length === 0) {

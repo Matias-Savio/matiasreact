@@ -17,7 +17,7 @@ const Cart = () => {
           <CartTotal />
         </>
       ) : (
-        <h2 className="cart-message-center">El Carrito esta vacio</h2>
+        <h2 className="cart-message-center">El Carrito esta vacio😥</h2>
       )}
     </>
   );
