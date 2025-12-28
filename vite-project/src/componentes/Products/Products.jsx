@@ -1,10 +1,10 @@
 import "./Products.css";
 import data from "../../data.json";
+import { useContext } from "react";
+import { CartContext } from "../../Context/context";
 
 const Products = () => {
-  const handleAddToCart = (product) => {
-    console.log("Agregando al carrito:", product);
-  };
+  const { handleAddToCart } = useContext(CartContext);
 
   return (
     <>
