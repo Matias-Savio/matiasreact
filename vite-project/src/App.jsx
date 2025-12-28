@@ -3,21 +3,20 @@ import Home from "./componentes/Home";
 import Cart from "./componentes/Cart/Cart";
 import Products from "./componentes/Products/Products";
 import Computadoras from "./componentes/Categoria/Computadoras";
-import NavBar from "./componentes/Navbar/Navbar";
+import Main from "./componentes/Main/Main";
 import CartProvider from "./Context/context";
 
 function App() {
   return (
     <CartProvider>
-      <Home />
-      <main className="main">
+      <Main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<Products />} />
           <Route path="/computadoras" element={<Computadoras />} />
         </Routes>
-      </main>
+      </Main>
     </CartProvider>
   );
 }

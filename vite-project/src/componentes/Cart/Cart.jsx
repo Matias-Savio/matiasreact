@@ -1,14 +1,17 @@
 import NavBar from "../Navbar/Navbar";
 import "./Cart.css";
+import { useContext } from "react";
 import { CartContext } from "../../Context/context";
 import CartElement from "./CartElement";
 import CartTotal from "./CartTotal";
 
 const Cart = () => {
+  const { cart } = useContext(CartContext);
+
   return (
     <>
       <NavBar />
-      {Cart.length > 0 ? (
+      {cart.length > 0 ? (
         <>
           <CartElement />
           <CartTotal />

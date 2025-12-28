@@ -1,17 +1,15 @@
+import NavBar from "../Navbar/Navbar";
 import data from "../../data.json";
 import "./Computadoras.css";
 import { useContext } from "react";
 import { CartContext } from "../../Context/context";
 
 const Computadoras = () => {
-  const { setCart } = useContext(CartContext);
-
-  const handleAddToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
-  };
+  const { handleAddToCart } = useContext(CartContext);
 
   return (
     <>
+      <NavBar />
       {data
         .filter((product) => product.category === "Computadoras")
         .map((product) => {
