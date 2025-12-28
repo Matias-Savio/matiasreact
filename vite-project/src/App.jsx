@@ -3,6 +3,7 @@ import Home from "./componentes/Home";
 import Cart from "./componentes/Cart/Cart";
 import Products from "./componentes/Products/Products";
 import Computadoras from "./componentes/Categoria/Computadoras";
+import ItemDetail from "./componentes/Item/ItemDeatail";
 import Main from "./componentes/Main/Main";
 import CartProvider from "./Context/context";
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<Products />} />
           <Route path="/computadoras" element={<Computadoras />} />
+          <Route path="/item/:id" element={<ItemDetail />} />
         </Routes>
       </Main>
     </CartProvider>
